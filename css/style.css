@@ -1441,3 +1441,9 @@ body.offcanvas {
   line-height: 4.5rem;
   margin-right: .8rem;
 }
+
+.recent-updates{
+  background: #f2f3f7;
+  padding: 0px 15px;
+  border-radius: 7px;
+}
