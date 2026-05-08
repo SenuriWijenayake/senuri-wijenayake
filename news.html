@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>News — Senuri Wijenayake</title>
+<meta name="description" content="News and updates from Senuri Wijenayake — papers, talks, grants, and academic milestones." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/95d795fabf.js" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #15171c;
+    --ink-soft: #3d4250;
+    --muted: #6b7280;
+    --line: #e7e5df;
+    --accent: #2b4a8b;
+    --accent-soft: #eaf0fb;
+    --shadow: 0 1px 2px rgba(15, 17, 28, 0.04), 0 8px 24px rgba(15, 17, 28, 0.06);
+    --maxw: 880px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Nav */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    background: rgba(250, 250, 247, 0.82);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .brand span { color: var(--accent); }
+  .back-link {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    transition: all 0.15s;
+  }
+  .back-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  main { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px 48px; }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  .lede {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+
+  /* Filter chips */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .filter {
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .filter:hover { border-color: var(--accent); color: var(--accent); }
+  .filter.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  /* Year groups */
+  .year-group { margin-bottom: 32px; }
+  .year-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.015em;
+    margin: 0 0 14px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .year-heading::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .news-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+  .news-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .news-date {
+    font-size: 13px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .news-text { color: var(--ink-soft); font-size: 15px; }
+  .news-text strong { color: var(--ink); font-weight: 600; }
+  .news-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 48px;
+    border-top: 1px solid var(--line);
+    padding: 24px 24px 36px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 640px) {
+    main { padding: 36px 20px; }
+    h1 { font-size: 26px; }
+    .news-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">Senuri <span>Wijenayake</span></div>
+    <a href="index.html" class="back-link">← Back to home</a>
+  </div>
+</nav>
+
+<main>
+  <h1>News &amp; Updates</h1>
+  <p class="lede">Papers, talks, grants, and academic milestones — most recent first.</p>
+
+  <div class="filters" role="tablist">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="grant">Grants</button>
+    <button class="filter" data-filter="paper">Papers</button>
+    <button class="filter" data-filter="talk">Talks</button>
+    <button class="filter" data-filter="award">Awards</button>
+    <button class="filter" data-filter="service">Service</button>
+  </div>
+
+  <div class="year-group" data-year="2026">
+    <h2 class="year-heading">2026</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="grant">
+        <div class="news-date">2026</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded the <strong>ARC Discovery Early Career Researcher Award (DECRA26)</strong> — A$525,571 to lead <em>Protecting Australia from Online Abuse: Making Online Safety Work for All</em> (2026 – 2029).</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2025">
+    <h2 class="year-heading">2025</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="talk">
+        <div class="news-date">Sep 2025</div>
+        <div class="news-text"><span class="news-tag">Talk</span>Presented at the inaugural <strong>Women and Girls' Online Safety Conference 2025</strong> at the Open University (UK).</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2025</div>
+        <div class="news-text"><span class="news-tag">Paper</span>New paper accepted at <strong>OzCHI '25</strong>: <em>Advancing Interdisciplinary Approaches to Online Safety Research</em>.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2025</div>
+        <div class="news-text"><span class="news-tag">Paper</span>Published <strong>A Review of Online Social Conformity: Outcomes and Determinants</strong> in the <em>International Journal of Human–Computer Interaction</em> (Q1).</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2025</div>
+        <div class="news-text"><span class="news-tag">Paper</span><strong>Impact of Agent-Generated Rationales on Online Social Conformity</strong> accepted at <em>FAccT '25</em>.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2025</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Design Patterns for AI Curated Content</em> accepted at <strong>IASDR 2025</strong>.</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2024">
+    <h2 class="year-heading">2024</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="grant">
+        <div class="news-date">Dec 2024</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded an <strong>ACDICT grant</strong> (A$10,000) to co-design inclusive cybersecurity curricula in Australian higher education.</div>
+      </li>
+      <li class="news-item" data-tags="grant">
+        <div class="news-date">Aug 2024</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded an <strong>ACCAN grant</strong> (A$78,045) to research design strategies and policies protecting women and gender-diverse people from technology-facilitated abuse on social media.</div>
+      </li>
+      <li class="news-item" data-tags="service">
+        <div class="news-date">2024</div>
+        <div class="news-text"><span class="news-tag">Service</span>Serving as <strong>Proceedings Chair</strong> for ACM UbiComp 2024.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2024</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Mapping in Harmony: Co-designing User Interfaces for Conflict Management on OSM</em> published in the <strong>International Journal of Human-Computer Studies</strong> (Q1).</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2023">
+    <h2 class="year-heading">2023</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2023</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Combining Worker Factors for Heterogeneous Crowd Task Assignment</em> accepted at <strong>The Web Conference (WWW '23)</strong>.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2023</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>My Eyes Speak: Improving Perceived Sociability of Autonomous Vehicles in Shared Spaces</em> published in the <strong>Proceedings of the ACM on Human-Computer Interaction (Mobile HCI 2023)</strong>.</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2022">
+    <h2 class="year-heading">2022</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="service">
+        <div class="news-date">2022</div>
+        <div class="news-text"><span class="news-tag">Service</span>Serving as <strong>Web Chair</strong> for OzCHI 2022.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2022</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>What's the Appeal? Perceptions of Review Processes for Algorithmic Decisions</em> accepted at <strong>CHI '22</strong>.</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2021">
+    <h2 class="year-heading">2021</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="grant">
+        <div class="news-date">Dec 2021</div>
+        <div class="news-text"><span class="news-tag">Grant</span>Awarded an <strong>Instagram Research Award</strong> (A$75,000) to mitigate cyberbullying experiences of younger users on Instagram.</div>
+      </li>
+      <li class="news-item" data-tags="award">
+        <div class="news-date">2021</div>
+        <div class="news-text"><span class="news-tag">Award</span>Named <strong>Graduate Research Student of the Year 2021</strong> by the Faculty of Engineering &amp; IT, University of Melbourne.</div>
+      </li>
+      <li class="news-item" data-tags="award">
+        <div class="news-date">Aug 2021</div>
+        <div class="news-text"><span class="news-tag">Award</span><strong>Best Paper Award</strong> at <em>INTERACT '21</em> for <em>Quantifying the Effects of Age-related Stereotypes on Online Social Conformity</em>.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2021</div>
+        <div class="news-text"><span class="news-tag">Paper</span>Successfully defended my doctoral thesis: <em>Understanding the Dynamics of Online Social Conformity</em> at the University of Melbourne.</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2020">
+    <h2 class="year-heading">2020</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="service">
+        <div class="news-date">2020</div>
+        <div class="news-text"><span class="news-tag">Service</span>Serving as <strong>Social Media Co-chair</strong> for OzCHI 2020.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2020</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Effect of Conformity on Perceived Trustworthiness of News in Social Media</em> published in <strong>IEEE Internet Computing</strong>.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2020</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Quantifying the Effect of Social Presence on Online Social Conformity</em> published at <strong>CSCW 2020</strong>.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2020</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Impact of Contextual and Personal Determinants on Online Social Conformity</em> published in <strong>Computers in Human Behavior</strong>.</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="year-group" data-year="2019">
+    <h2 class="year-heading">2019</h2>
+    <ul class="news-list">
+      <li class="news-item" data-tags="award">
+        <div class="news-date">2019</div>
+        <div class="news-text"><span class="news-tag">Award</span>Awarded the <strong>Excellence in Tutoring Award</strong> by the School of Computing &amp; Information Systems, University of Melbourne.</div>
+      </li>
+      <li class="news-item" data-tags="paper">
+        <div class="news-date">2019</div>
+        <div class="news-text"><span class="news-tag">Paper</span><em>Measuring the Effects of Gender on Online Social Conformity</em> published at <strong>CSCW 2019</strong>.</div>
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Senuri Wijenayake · <a href="index.html">Home</a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const filters = document.querySelectorAll('.filter');
+  const items = document.querySelectorAll('.news-item');
+  const groups = document.querySelectorAll('.year-group');
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(f => f.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+
+      items.forEach(it => {
+        const tags = it.dataset.tags || '';
+        it.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
+      });
+
+      // Hide year groups that have no visible items
+      groups.forEach(g => {
+        const visible = g.querySelectorAll('.news-item:not([style*="display: none"])').length;
+        g.style.display = visible === 0 ? 'none' : '';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
